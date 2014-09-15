@@ -4,16 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Project Overview</title>
+    <title>@yield('title')</title>
     
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/userInput.css" rel="stylesheet">
+    {{ HTML::style('css/bootstrap.min.css') }}
+    {{ HTML::style('css/userInput.css') }}
       
     <!--Google Maps-->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+    {{ HTML::script('https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places') }}
+    
 
-    <script src="js/geo_info.js"></script>
+    
+    
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -40,7 +42,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li @yield('projectState')>{{ link_to_route('projectOverview.index', 'Project Overview') }}</li>
+            <li @yield('projectState')>{{ link_to_route('overview.index', 'Project Overview') }}</li>
             <li @yield('siteState')>{{ link_to_route('siteConditions.index', 'Site Conditions') }}</li>
             <li @yield('infraState')>{{ link_to_route('infrastructure.index', 'Infrastructure') }}</li>
             <li @yield('resourceState')>{{ link_to_route('accessResources.index', 'Access to Resources') }}</li>
@@ -82,10 +84,13 @@
         </div>
       </div>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/geo_info.js"></script>
+    
+    {{ HTML::script('js/bootstrap.min.js') }}
+    {{ HTML::script('js/geo_info.js') }}
   </body>
 </html>

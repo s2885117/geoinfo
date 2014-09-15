@@ -29,7 +29,7 @@ class CreateProjectsTable extends Migration {
 	 */
 	public function down()
 	{
-		DB::table('users')->delete();
+		
 	}
 
 }

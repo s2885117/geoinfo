@@ -4,10 +4,10 @@ class Company extends Eloquent
 {
   
   public function user() {
-    return $this->hasOne('user');
+    return $this->hasOne('User');
   }
   
   public function projects() {
-    return $this->hasMany('projects');
+    return $this->hasMany('Project');
   }
 }

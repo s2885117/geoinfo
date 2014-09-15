@@ -9,8 +9,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::post('index/login', array('as' => 'index.login', 'uses' => 'IndexController@login'));
-Route::get('index/logout', array('as'=>'index.logout', 'uses'=> 'IndexController@logout'));
+Route::post('user/login', array('as' => 'user.login', 'uses' => 'UserController@login'));
+Route::get('user/logout', array('as'=>'user.logout', 'uses'=> 'UserController@logout'));
+Route::post('company/companyEdit/{id}', array('as' => 'company.update', 'uses' => 'CompanyController@update'));
+Route::post('project/projectEdit/{id}', array('as' => 'project.update', 'uses' => 'ProjectController@update'));
+Route::post('portal/overview/{id}', array('as' => 'overview.update', 'uses' => 'OverviewController@update'));
 
 Route::get('/', function()
            {
@@ -22,14 +25,24 @@ Route::get('failedLogin', function()
             });
 Route::get('waste', function()
            {
-             return View::make('porta/sideBar/waste');
+             return View::make('portal/sideBar/waste');
            });
-Route::post('portal/projectOverview', array('as' => 'portal.projectOverview', 'uses' => 'OverviewController@index'));
+Route::get('signup', function()
+           {
+             return View::make('user/signup');
+           });
+Route::get('userProjects', function()
+           {
+             return Redirect::action('ProjectController@index');
+           });
+
+Route::post('portal/overview', array('as' => 'portal.overview', 'uses' => 'OverviewController@index'));
 Route::resource('index', 'IndexController');
+Route::resource('user', 'UserController');
 Route::resource('company', 'CompanyController');
 Route::resource('project', 'ProjectController');
 Route::resource('start', 'PortalController');
-Route::resource('projectOverview', 'OverviewController');
+Route::resource('overview', 'OverviewController');
 Route::resource('approvalActivities', 'ActivitiesController');
 Route::resource('accessResources', 'AccessController');
 Route::resource('construction', 'ContructionController');

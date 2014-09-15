@@ -18,8 +18,6 @@ class CreateUsersTable extends Migration {
       $table->string('surname');
       $table->string('email')->unique();
       $table->string('password')->index();
-      $table->integer('project_id')->nullable();
-      $table->foreign('project_id')->references('id')->on('projects');
       $table->boolean('tech');
       $table->boolean('finance');
       $table->string('remember_token')->nullable();

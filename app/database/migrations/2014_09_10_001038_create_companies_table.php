@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanysTable extends Migration {
+class CreateCompaniesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCompanysTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('companys', function($table) {
+		Schema::create('companies', function($table) {
       $table->increments('id');
       $table->string('company_name');
       $table->string('company_address');

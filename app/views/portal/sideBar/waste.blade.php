@@ -887,7 +887,7 @@ class="active"
 		      <td colspan="2">
 			<div class="form-group">
 			  <label for="other3" class="control-label">Quantity: </label>
-	        {{ Form::text(other3Quantity'', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
+	        {{ Form::text('other3Quantity','', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
 			</div>
 		      </td>
 		    </tr>
