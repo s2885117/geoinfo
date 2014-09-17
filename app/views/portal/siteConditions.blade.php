@@ -30,11 +30,13 @@ class="active"
 		      <div class="form-group">
 			<label for="communityBuilding" class="control-label">Are there any existing building(s) within the community:</label>
 			<div>
-			  <select class="form-control" id="communityBuilding">
-			    <option value='N/A' selected>N/A</option>
-			    <option value='No'>No</option>
-			    <option value='Yes'>Yes</option>
-			  </select>
+			  {{ Form::select('communityBuilding', [
+					'N/A' => 'N/A', 
+					'No' => 'No', 
+					'Yes' => 'Yes'],
+					null, 
+					['class' => 'form-control']
+				) }}        
 			</div>
 		      </div>
 		    </td>
@@ -42,11 +44,13 @@ class="active"
 		      <div class="form-group">
 			<label for="communityInfrastructure" class="control-label">Is there any existing public realm Infrastructure within the comunity:</label>
 			<div>
-			  <select class="form-control" id="communityInfrastructure">
-			    <option value='N/A' selected>N/A</option>
-			    <option value='No'>No</option>
-			    <option value='Yes'>Yes</option>
-			  </select>
+        {{ Form::select('communityInfrastructure', [
+					'N/A' => 'N/A', 
+					'No' => 'No', 
+					'Yes' => 'Yes'],
+					null, 
+					['class' => 'form-control']
+				) }}
 			</div>
 		      </div>
 		    </td>
@@ -58,13 +62,15 @@ class="active"
 		      <div class="form-group">
 			<label for="grossFloorArea" class="control-label">Total Gross Floor Area:</label>
 			<div class="form-inline" id="grossFloorArea">
-			  <select class="form-control" id="buildingUnit">
-			    <option value='N/A' selected>N/A</option>
-			    <option value='Square Meter'>Square Meter</option>
-			    <option value='Square Kilometer'>Square Kilometer</option>
-			    <option value='Square Mile'>Square Mile</option>
-			    <option value='Square Yard'>Square Foot</option>
-			  </select>
+        {{ Form::select('buildingUnit', [// duplicate id
+						'N/A' => 'N/A', 
+						'Square Metre' => 'Square Metre', 
+						'Square Kilometre' => 'Square Kilometre',
+						'Square Mile' => 'Square Mile',
+						'Square Yard' => 'Square Yard'], //??
+						null, 
+						['class' => 'form-control']
+					) }}
 			    <input type="text" class="form-control" id="floorArea" placeholder="value">
 			</div>
 		      </div>
@@ -78,14 +84,17 @@ class="active"
 		      <div class="form-group">
 			<label for="totalAreaInfrastructure" class="control-label">Total Area:</label>
 			<div class="form-inline" id="totalAreaInfrastructure">
-			  <select class="form-control" id="buildingUnit">
-			    <option value='N/A' selected>N/A</option>
-			    <option value='Square Meter'>Square Meter</option>
-			    <option value='Square Kilometer'>Square Kilometer</option>
-			    <option value='Square Mile'>Square Mile</option>
-			    <option value='Square Yard'>Square Foot</option>
-			  </select>
+        {{ Form::select('buildingUnit', [// duplicate id
+						'N/A' => 'N/A', 
+						'Square Metre' => 'Square Metre', 
+						'Square Kilometre' => 'Square Kilometre',
+						'Square Mile' => 'Square Mile',
+						'Square Yard' => 'Square Yard'], //??
+						null, 
+						['class' => 'form-control']
+					) }}
 			    <input type="text" class="form-control" id="infrastructureArea" placeholder="value">
+        {{ Form::text('infrastructureArea', '', array('class' => 'form-control', 'placeholder' => 'value')); }}
 			</div>
 		      </div>
 		      </fieldset>
@@ -168,6 +177,7 @@ class="active"
 			  <label for="nearestCommercial" class="control-label">Nearest Commercial:</label>
 			  <div>
 			    <input type="text" class="form-control" id="nearestCommercial" placeholder="">
+          {{ Form::text('nearestCommercial', '', array('class' => 'form-control', 'placeholder' => '')); }}
 			  </div>
 			</div>
 		      </td>
@@ -201,7 +211,7 @@ class="active"
 			<div class="form-group">
 			  <label for="drainage" class="control-label">Drainage:</label>
 			  <div>
-			    <input type="text" class="form-control" id="drainage" placeholder="">
+          {{ Form::text('drainage', '', array('class' => 'form-control', 'placeholder' => '')); }}
 			  </div>
 			</div>
 		      </td>

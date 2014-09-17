@@ -12,7 +12,7 @@ class CreateInfrastructuresTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Infrastructures', function($table) {
+		Schema::create('infrastructures', function($table) {
       $table->increments('id');
       $table->integer('project_id');
       $table->foreign('project_id')->references('id')->on('project');
@@ -20,14 +20,14 @@ class CreateInfrastructuresTable extends Migration {
       $table->string('accessRoadD')->nullable();
       $table->string('infrastructureCorridorsNo')->nullable();
       $table->string('infrastructureCorridorsD')->nullable();
-      $table->string('fixedIntrastuctureNo')->nullable();
-      $table->string('fixedIntrastuctureD')->nullable();
+      $table->string('fixedInfrastuctureNo')->nullable();
+      $table->string('fixedInfrastuctureD')->nullable();
       $table->string('waterTanksNo')->nullable();
       $table->string('waterTanksD')->nullable();
       $table->string('siteOfficeNo')->nullable();
       $table->string('siteOfficeD')->nullable();
-      $table->string('cummunicationsTowerNo')->nullable();
-      $table->string('cummunicationsTowerD')->nullable();
+      $table->string('communicationsTowerNo')->nullable();
+      $table->string('communicationsTowerD')->nullable();
       $table->string('wasteDisposalNo')->nullable();
       $table->string('wasteDisposalD')->nullable();
       $table->string('waterTreatmentNo')->nullable();
@@ -40,8 +40,8 @@ class CreateInfrastructuresTable extends Migration {
       $table->string('waterFeatureD')->nullable();
       $table->string('exhaustStackNo')->nullable();
       $table->string('exhaustStackD')->nullable();
-      $table->string('cummunityCoolingNo')->nullable();
-      $table->string('cummunityCoolingD')->nullable();
+      $table->string('communityCoolingNo')->nullable();
+      $table->string('communityCoolingD')->nullable();
       $table->string('vehicleTurnaroundsNo')->nullable();
       $table->string('vehicleTurnaroundsD')->nullable();
       $table->string('aboveCarParkingNo')->nullable();
@@ -78,7 +78,6 @@ class CreateInfrastructuresTable extends Migration {
       $table->string('workshopsNo')->nullable();
       $table->string('workshopsD')->nullable();
       
-      $table->timestamps();
     });
 	}
 

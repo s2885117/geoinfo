@@ -4,8 +4,19 @@ class ProjectController extends \BaseController {
 
   public function index()
   {
-    $projects = User::find(Auth::user()->id)->projects;
-    return View::make('project.project', compact('projects'));
+    if (Auth::user()->admin = true)
+    {
+      $projects = User::find(Auth::user()->id)->projects;
+      if(is_null($projects))
+        return Redirect::action('ProjectController@create');
+      return View::make('project.project', compact('projects'));
+    }
+    else
+    {
+      $project = Project::find(Auth::user()->project_id);
+    $users = DB::table('Users')->where('project_id', $project->id)->get();
+    return View::make('project.project', compact('project', 'users'));
+    }
   }
 
   public function create()
@@ -45,12 +56,14 @@ class ProjectController extends \BaseController {
 
   public function show($id)
   {
+    //variable to create sub-Users
     $project = Project::find($id);
-    return View::make('project.project', compact('project'));
+    $users = DB::table('Users')->where('project_id', $project->id)->get();
+    return View::make('project.project', compact('project', 'users'));
   }
-  
+
   public function destroy($id)
-    {
+  {
     $project = Project::find($id);
     $project->delete();
     return View::make('index');

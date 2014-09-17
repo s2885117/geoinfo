@@ -33,8 +33,9 @@ class WasteController extends \BaseController {
 	{
 		//
 	}
-
-
-
-
+  public function show($id)
+  {
+    $waste = DB::table('wastes')->where('project_id', $id)->first();
+    return View::make('portal.sidebar.waste', compact('waste', 'id'));
+  }
 }

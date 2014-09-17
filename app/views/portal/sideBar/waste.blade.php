@@ -13,7 +13,7 @@ class="active"
 	      <h4 class="panel-title">
 		<a data-toggle="collapse" data-parent="#overview" href="#collapseOne">
 		  <span class="badge pull-right">1</span>
-		    Proposed Community Details
+		    Demolition Waste
 		</a>
 	      </h4>
 	    </div>
@@ -24,905 +24,795 @@ class="active"
 		  5%
 		</div>
 	      </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table col-md-6">
+	      <div class="container-fluid" style="background-color: #fcf8e3; margin-left: -15px; margin-right: -15px; margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px;">
+		<form class="form col-xs-6 col-md-4" role="form">
+		  <table class="table-condensed">
 		    <fieldset id="pOffice">
-		      <legend><span>Office</span></legend>
+		      <legend><span style="font-size: 18px;">Office</span></legend>
 		    <tr>
-		      <td>
-			<div class="form-inline" id="totalOfficeGross">
-			  <label for="office" class="control-label">Office Gross Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('officeGrossUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
-            null, 
-            ['class' => 'form-control']
-				) }}
-          {{ Form::text('officeGrossArea', '', array('class' => 'form-control', 'placeholder' => 'Office Gross Value')); }}
-			  </div>
-			</div>
+		      <td colspan="2">
+			Office Gross Floor Area
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-inline" id="totalOfficeNet">
-			  <label for="office" class="control-label">Office Net Floor Area: </label>
-			  <div class="form-group">
-			   {{ Form::select('officeNetUnit', [
+            {{ Form::select('officeDGrossUnit', [
             'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
+            'Square Meter' => 'Square Meter', 
+            'Square Kilometer' => 'Square Kilometer',
             'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
+            'Square Foot' => 'Square Foot'],
             null, 
             ['class' => 'form-control']
           ) }}
-          {{ Form::text('officeNetArea', '', array('class' => 'form-control', 'placeholder' => 'Office Net Value')); }}
-			  </div>
-			</div>
+		      </td>
+		      <td>
+            {{ Form::text('officeDGrossArea', '', array('class' => 'form-control', 'placeholder' => 'Office Gross Value')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td colspan="2">
+			Office Net Floor Area
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-inline">
-			  <label for="office" class="control-label">Override default operational waste values for offices: </label>
-			  {{ Form::select('overrideOfficeValue', [
+            {{ Form::select('officeDNetUnit', [
+            'N/A' => 'Unit', 
+            'Square Meter' => 'Square Meter', 
+            'Square Kilometer' => 'Square Kilometer',
+            'Square Mile' => 'Square Mile',
+            'Square Foot' => 'Square Foot'],
+            null, 
+            ['class' => 'form-control']
+          ) }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDNetArea', '', array('class' => 'form-control', 'placeholder' => 'Office Net Value')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td colspan="2">
+			Override default operational waste values for offices
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+             {{ Form::select('overrideDOfficeValue', [
             'N/A' => 'N/A', 
             'No' => 'No', 
             'Yes' => 'Yes'],
             null, 
             ['class' => 'form-control']
           ) }}
-			</div>
 		      </td>
 		    </tr>
 		  </fieldset>
 		  </table>
 		</form>
-	      </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
+		<form class="form col-xs-6 col-sm-6 col-md-6" style="min-width:460px;" role="form">
+		  <table class="table-condensed">
 		    <fieldset id="pOfficeWasteComposition">
-		      <legend><span>Waste Composition and Generation for Offices</span></legend>
+		      <legend><span style="font-size: 18px;">Waste Composition and Generation for Offices</span></legend>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="office" class="control-label">Paper/Cardboard: </label>
-			  <div class="form-group">
-          {{ Form::text('officePaper', '', array('class' => 'form-control', 'placeholder' => 'Paper/Cardboard(%)')); }}
-			  </div>
-			</div>
+			
 		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="office" class="control-label">Metal: </label>
-			  <div class="form-group">
-          {{ Form::text('officeMetal', '', array('class' => 'form-control', 'placeholder' => 'Metal(%)')); }}
-			  </div>
-			</div>
+		      <td style="text-align: center;">
+			Cardboard
 		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="office" class="control-label">Glass: </label>
-			  <div class="form-group">
-			    {{ Form::text('officeGlass', '', array('class' => 'form-control', 'placeholder' => 'Glass(%)')); }}
-			  </div>
-			</div>
+		      <td style="text-align: center;">
+			Metal
+		      </td>
+		      <td style="text-align: center;">
+			Glass
+		      </td>
+		      <td style="text-align: center;">
+			Plastic
+		      </td>
+		      <td style="text-align: center;">
+			Organic
+		      </td>
+		      <td style="text-align: center;">
+			Other
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="office" class="control-label">Plastic: </label>
-			  <div class="form-group">
-          {{ Form::text('officePlastic', '', array('class' => 'form-control', 'placeholder' => 'Plastic(%)')); }}
-			  </div>
-			</div>
+			Target
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="office" class="control-label">Organic: </label>
-			  <div class="form-group">
-          {{ Form::text('officeOrganic', '', array('class' => 'form-control', 'placeholder' => 'Organic(%)')); }}
-			  </div>
-			</div>
+            {{ Form::text('officeDPaperT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }} 
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="office" class="control-label">Other non-haz: </label>
-			  <div class="form-group">
-          {{ Form::text('officeOther', '', array('class' => 'form-control', 'placeholder' => 'Non-Haz(%)')); }}
-			  </div>
-			</div>
+            {{ Form::text('officeDMetalT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }} 
+		      </td>
+		      <td>
+            {{ Form::text('officeDGlassT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }} 
+		      </td>
+		      <td>
+            {{ Form::text('officeDPlasticT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDOrganicT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDOtherT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		    </tr>
 		    <tr>
-		      <td colspan="2">
-			<div class="form-group">
-			  <label for="office" class="control-label">Quantity: </label>
-        {{ Form::text('officeQuantity', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
-			</div>
+		      <td>
+			Propose
+		      </td>
+		      <td>
+            {{ Form::text('officeDPaperP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDMetalP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDGlassP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDPlasticP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDOrganicP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDOtherP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Change
+		      </td>
+		      <td>
+            {{ Form::text('officeDPaperC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDMetalC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDGlassC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDPlasticC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDOrganicC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('officeDOtherC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Actual
+		      </td>
+		      <td>
+             {{ Form::text('officeDPaperA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('officeDMetalA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('officeDGlassA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('officeDPlasticA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('officeDOrganicA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('officeDOtherA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Quantity
+		      </td>
+		      <td colspan="3">
+            {{ Form::text('officeDQuantity', '', array('class' => 'form-control', 'style' => 'margin: auto;', 'placeholder' => 'kg/m2/year')); }}
 		      </td>
 		    </tr>
 		  </fieldset>
 		  </table>
 		</form>
 	      </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
-		  <fieldset id="pRetail">
-		    <legend><span>Retail</span></legend>
+	      <div class="container-fluid" style="margin-left: -15px; margin-right: -15px; margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px;">
+		<form class="form col-xs-6 col-md-4" role="form">
+		  <table class="table-condensed">
+		    <fieldset id="pRetail">
+		      <legend><span style="font-size: 18px;">Retail</span></legend>
 		    <tr>
-		      <td>
-			<div class="form-inline" id="totalRetailGross">
-			  <label for="retail" class="control-label">Retail Gross Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('retailGrossUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
-            null, 
-            ['class' => 'form-control']
-          ) }}
-          {{ Form::text('retailGrossArea', '', array('class' => 'form-control', 'placeholder' => 'Retail Gross Value')); }}
-			  </div>
-			</div>
+		      <td colspan="2">
+			Retail Gross Floor Area
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-inline" id="totalRetailNet">
-			  <label for="retail" class="control-label">Retail Net Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('retailNetUnit', [
+            {{ Form::select('retailDGrossUnit', [
             'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
+            'Square Meter' => 'Square Meter', 
+            'Square Kilometer' => 'Square Kilometer',
             'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
+            'Square Foot' => 'Square Foot'],
             null, 
             ['class' => 'form-control']
           ) }}
-          {{ Form::text('retailNetArea', '', array('class' => 'form-control', 'placeholder' => 'Retail Net Value')); }}
-			 </div>
-			</div>
+		      </td>
+		      <td>
+			<input type="text" class="form-control" id="retailGrossArea" placeholder="Retail Gross Value">
+		      </td>
+		    </tr>
+		    <tr>
+		      <td colspan="2">
+			Retail Net Floor Area
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-inline">
-			  <label for="retail" class="control-label">Override default operational waste values for retail: </label>
-			  {{ Form::select('overrideRetailValue', [
-					'N/A' => 'N/A', 
-					'No' => 'No', 
-					'Yes' => 'Yes'],
-					null, 
-					['class' => 'form-control']
-				) }}
-			</div>
+            {{ Form::select('retailDNetUnit', [
+            'N/A' => 'Unit', 
+            'Square Meter' => 'Square Meter', 
+            'Square Kilometer' => 'Square Kilometer',
+            'Square Mile' => 'Square Mile',
+            'Square Foot' => 'Square Foot'],
+            null, 
+            ['class' => 'form-control']
+          ) }}
+		      </td>
+		      <td>
+			<input type="text" class="form-control" id="retailNetArea" placeholder="Retail Net Value">
+		      </td>
+		    </tr>
+		    <tr>
+		      <td colspan="2">
+			Override default operational waste values for retail
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+            {{ Form::select('overrideDRetailValue', [
+            'N/A' => 'N/A', 
+            'No' => 'No', 
+            'Yes' => 'Yes'],
+            null, 
+            ['class' => 'form-control']
+          ) }}
 		      </td>
 		    </tr>
 		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
+		  </table>
+		</form>
+		<form class="form col-xs-6 col-sm-6 col-md-6" style="min-width:460px;" role="form">
+		  <table class="table-condensed">
 		    <fieldset id="pRetailWasteComposition">
-		      <legend><span>Waste Composition and Generation for Retail</span></legend>
+		      <legend><span style="font-size: 18px;">Waste Composition and Generation for Retail</span></legend>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="retail" class="control-label">Paper/Cardboard: </label>
-			  <div class="form-group">
-          {{ Form::text('retailPaper', '', array('class' => 'form-control', 'placeholder' => 'Paper/Cardboard(%)')); }}
-			  </div>
-			</div>
+			
 		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="retail" class="control-label">Metal: </label>
-			  <div class="form-group">
-			    <input type="text" class="form-control" id="retailMetal" placeholder="Metal(%)">
-          {{ Form::text('retailMetal', '', array('class' => 'form-control', 'placeholder' => 'Metal(%)')); }}
-			  </div>
-			</div>
+		      <td style="text-align: center;">
+			Cardboard
 		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="retail" class="control-label">Glass: </label>
-			  <div class="form-group">
-          {{ Form::text('retailGlass', '', array('class' => 'form-control', 'placeholder' => 'Glass(%)')); }}
-			  </div>
-			</div>
+		      <td style="text-align: center;">
+			Metal
+		      </td>
+		      <td style="text-align: center;">
+			Glass
+		      </td>
+		      <td style="text-align: center;">
+			Plastic
+		      </td>
+		      <td style="text-align: center;">
+			Organic
+		      </td>
+		      <td style="text-align: center;">
+			Other
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="retail" class="control-label">Plastic: </label>
-			  <div class="form-group">
-          {{ Form::text('retailPlastic', '', array('class' => 'form-control', 'placeholder' => 'Plastic(%)')); }}
-			  </div>
-			</div>
+			Target
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="retail" class="control-label">Organic: </label>
-			  <div class="form-group">
-          {{ Form::text('retailOrganic', '', array('class' => 'form-control', 'placeholder' => 'Organic(%)')); }}
-			  </div>
-			</div>
+            {{ Form::text('retailDPaperT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="retail" class="control-label">Other non-haz: </label>
-			  <div class="form-group">
-          {{ Form::text('retailOther', '', array('class' => 'form-control', 'placeholder' => 'Non-Haz(%)')); }}
-			  </div>
-			</div>
+            {{ Form::text('retailDMetalT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDGlassT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDPlasticT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDOrganicT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDOtherT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		    </tr>
 		    <tr>
-		      <td colspan="2">
-			<div class="form-group">
-			  <label for="retail" class="control-label">Quantity: </label>
-        {{ Form::text('retailQuantity', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
-			</div>
+		      <td>
+			Propose
+		      </td>
+		      <td>
+            {{ Form::text('retailDPaperP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDMetalP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDGlassP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDPlasticP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDOrganicP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDOtherP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Change
+		      </td>
+		      <td>
+            {{ Form::text('retailDPaperC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDMetalC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDGlassC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDPlasticC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDOrganicC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDOtherC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Actual
+		      </td>
+		      <td>
+            {{ Form::text('retailDPaperA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDMetalA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDGlassA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDPlasticA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDrganicA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('retailDOtherA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Quantity
+		      </td>
+		      <td colspan="3">
+             {{ Form::text('retailDQuantity', '', array('class' => 'form-control', 'style' => 'margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		    </tr>
 		  </fieldset>
 		  </table>
 		</form>
 	      </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
-		  <fieldset id="pSchool">
-		    <legend><span>School</span></legend>
+	      <div class="container-fluid" style="background-color: #fcf8e3; margin-left: -15px; margin-right: -15px; margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px;">
+		<form class="form col-xs-6 col-md-4" role="form">
+		  <table class="table-condensed">
+		    <fieldset id="pSchool">
+		      <legend><span style="font-size: 18px;">School</span></legend>
+		    <tr>
+		      <td colspan="2">
+			School Gross Floor Area
+		      </td>
+		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-inline" id="totalSchoolGross">
-			  <label for="school" class="control-label">School Gross Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('schoolGrossUnit', [
+            {{ Form::select('schoolDGrossUnit', [
             'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
+            'Square Meter' => 'Square Meter', 
+            'Square Kilometer' => 'Square Kilometer',
             'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
+            'Square Foot' => 'Square Foot'],
             null, 
             ['class' => 'form-control']
           ) }}
-          {{ Form::text('schoolGrossArea', '', array('class' => 'form-control', 'placeholder' => 'School Gross Value')); }}
-			  </div>
-			</div>
+		      </td>
+		      <td>
+			<input type="text" class="form-control" id="schoolGrossArea" placeholder="School Gross Value">
+		      </td>
+		    </tr>
+		    <tr>
+		      <td colspan="2">
+			School Net Floor Area
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-inline" id="totalSchoolNet">
-			  <label for="school" class="control-label">School Net Floor Area: </label>
-			  <div class="form-group">
-			   {{ Form::select('schoolNetUnit', [
-					'N/A' => 'Unit', 
-					'Square Metre' => 'Square Metre', 
-					'Square Kilometre' => 'Square Kilometre',
-					'Square Mile' => 'Square Mile',
-					'Square Yard' => 'Square Yard'], //??
-					null, 
-					['class' => 'form-control']
-				) }}
-          {{ Form::text('schoolNetArea', '', array('class' => 'form-control', 'placeholder' => 'School Net Value')); }}
-			  </div>
-			</div>
+            {{ Form::select('schoolDNetUnit', [
+            'N/A' => 'Unit', 
+            'Square Meter' => 'Square Meter', 
+            'Square Kilometer' => 'Square Kilometer',
+            'Square Mile' => 'Square Mile',
+            'Square Foot' => 'Square Foot'],
+            null, 
+            ['class' => 'form-control']
+          ) }}
+		      </td>
+		      <td>
+			<input type="text" class="form-control" id="schoolNetArea" placeholder="School Net Value">
+		      </td>
+		    </tr>
+		    <tr>
+		      <td colspan="2">
+			Override default operational waste values for school
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-inline">
-			  <label for="school" class="control-label">Override default operational waste values for school: </label>
-			  {{ Form::select('overrideSchoolValue', [
-					'N/A' => 'N/A', 
-					'No' => 'No', 
-					'Yes' => 'Yes'],
-					null, 
-					['class' => 'form-control']
-				) }}
-			</div>
+             {{ Form::select('overrideDSchoolValue', [
+            'N/A' => 'N/A', 
+            'No' => 'No', 
+            'Yes' => 'Yes'],
+            null, 
+            ['class' => 'form-control']
+          ) }}
 		      </td>
 		    </tr>
 		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
+		  </table>
+		</form>
+		<form class="form col-xs-6 col-sm-6 col-md-6" style="min-width:460px;" role="form">
+		  <table class="table-condensed">
 		    <fieldset id="pSchoolWasteComposition">
-		      <legend><span>Waste Composition and Generation for School</span></legend>
+		      <legend><span style="font-size: 18px;">Waste Composition and Generation for School</span></legend>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="school" class="control-label">Paper/Cardboard: </label>
-			  <div class="form-group">
-          {{ Form::text('schoolPaper', '', array('class' => 'form-control', 'placeholder' => 'Paper/Cardboard(%)')); }}
-			  </div>
-			</div>
+			
 		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="school" class="control-label">Metal: </label>
-			  <div class="form-group">
-          {{ Form::text('schoolMetal', '', array('class' => 'form-control', 'placeholder' => 'Metal(%)')); }}
-			  </div>
-			</div>
+		      <td style="text-align: center;">
+			Cardboard
 		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="school" class="control-label">Glass: </label>
-			  <div class="form-group">
-          {{ Form::text('schoolGlass', '', array('class' => 'form-control', 'placeholder' => 'Glass(%)')); }}
-			  </div>
-			</div>
+		      <td style="text-align: center;">
+			Metal
+		      </td>
+		      <td style="text-align: center;">
+			Glass
+		      </td>
+		      <td style="text-align: center;">
+			Plastic
+		      </td>
+		      <td style="text-align: center;">
+			Organic
+		      </td>
+		      <td style="text-align: center;">
+			Other
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="school" class="control-label">Plastic: </label>
-			  <div class="form-group">
-          {{ Form::text('schoolPlastic', '', array('class' => 'form-control', 'placeholder' => 'Plastic(%)')); }}
-			  </div>
-			</div>
+			Target
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="school" class="control-label">Organic: </label>
-			  <div class="form-group">
-          {{ Form::text('schoolOrganic', '', array('class' => 'form-control', 'placeholder' => 'Organic(%)')); }}
-			  </div>
-			</div>
+             {{ Form::text('schoolDPaperT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="school" class="control-label">Other non-haz: </label>
-			  <div class="form-group">
-          {{ Form::text('schoolOther', '', array('class' => 'form-control', 'placeholder' => 'Non-Haz(%')); }}
-			  </div>
-			</div>
+             {{ Form::text('schoolDMetalT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('schoolDGlassT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('schoolDPlasticT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('schoolDOrganicT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('schoolDOtherT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Propose
+		      </td>
+		      <td>
+            {{ Form::text('schoolDPaperP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDMetalP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDGlassP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDPlasticP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDOrganicP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDOtherP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Change
+		      </td>
+		      <td>
+            {{ Form::text('schoolDPaperC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDMetalC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDGlassC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDPlasticC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDOrganicC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDOtherC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Actual
+		      </td>
+		      <td>
+            {{ Form::text('schoolDPaperA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDMetalA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDGlassA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDPlasticA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDOrganicA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+            {{ Form::text('schoolDOtherA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Quantity
+		      </td>
+		      <td colspan="3">
+            {{ Form::text('schoolDQuantity', '', array('class' => 'form-control', 'style' => 'margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		  </fieldset>
+		  </table>
+		</form>
+	      </div>
+	      <div class="container-fluid" style="margin-left: -15px; margin-right: -15px; margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px;">
+		<form class="form col-xs-6 col-md-4" role="form">
+		  <table class="table-condensed">
+		    <fieldset id="pOther">
+		      <legend><span style="font-size: 18px;">Other Building Types</span></legend>
+		    <tr>
+		      <td colspan="2">
+			Other Building Gross Floor Area
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+            {{ Form::select('otherDGrossUnit', [
+            'N/A' => 'Unit', 
+            'Square Meter' => 'Square Meter', 
+            'Square Kilometer' => 'Square Kilometer',
+            'Square Mile' => 'Square Mile',
+            'Square Foot' => 'Square Foot'],
+            null, 
+            ['class' => 'form-control']
+          ) }}
+		      </td>
+		      <td>
+			<input type="text" class="form-control" id="otherGrossArea" placeholder="Other Building Gross Value">
 		      </td>
 		    </tr>
 		    <tr>
 		      <td colspan="2">
-			<div class="form-group">
-			  <label for="school" class="control-label">Quantity: </label>
-        {{ Form::text('schoolQuantity', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
-			</div>
+			Other Building Net Floor Area
 		      </td>
 		    </tr>
-		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
-		  <fieldset id="pResidential">
-		    <legend><span>Residential</span></legend>
 		    <tr>
 		      <td>
-			<div class="form-inline" id="totalResidentialGross">
-			  <label for="residential" class="control-label">Residential Gross Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('residentialGrossUnit', [
+            {{ Form::select('otherDNetUnit', [
             'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
+            'Square Meter' => 'Square Meter', 
+            'Square Kilometer' => 'Square Kilometer',
             'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
+            'Square Foot' => 'Square Foot'],
             null, 
             ['class' => 'form-control']
           ) }}
-          {{ Form::text('residentialGrossArea', '', array('class' => 'form-control', 'placeholder' => 'Residential Gross Value')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>
-			<div class="form-inline" id="totalResidentialNet">
-			  <label for="residential" class="control-label">Residential Net Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('residentialNetUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
-            null, 
-            ['class' => 'form-control']
-          ) }}
-          {{ Form::text('residentialNetArea', '', array('class' => 'form-control', 'placeholder' => 'Residential Net Value')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>
-			<div class="form-inline">
-			  <label for="residential" class="control-label">Override default operational waste values for residential: </label>
-			  {{ Form::select('overrideResidentialValue', [
-					'N/A' => 'N/A', 
-					'No' => 'No', 
-					'Yes' => 'Yes'],
-					null, 
-					['class' => 'form-control']
-				) }}
-			</div>
-		      </td>
-		    </tr>
-		  </fieldset>
-		</table>
-	      </form>
-	  </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
-		    <fieldset id="pResidentialWasteComposition">
-		      <legend><span>Waste Composition and Generation for Residential</span></legend>
-		    <tr>
-		      <td>
-			<div class="form-group">
-			  <label for="residential" class="control-label">Paper/Cardboard: </label>
-			  <div class="form-group">
-          {{ Form::text('residentialPaper', '', array('class' => 'form-control', 'placeholder' => 'Paper/Cardboard(%)')); }}
-			  </div>
-			</div>
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="residential" class="control-label">Metal: </label>
-			  <div class="form-group">
-          {{ Form::text('residentialMetal', '', array('class' => 'form-control', 'placeholder' => 'Metal(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="residential" class="control-label">Glass: </label>
-			  <div class="form-group">
-			    <input type="text" class="form-control" id="residentialGlass" placeholder="Glass(%)">
-          {{ Form::text('residentialGlass', '', array('class' => 'form-control', 'placeholder' => 'Glass(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>
-			<div class="form-group">
-			  <label for="residential" class="control-label">Plastic: </label>
-			  <div class="form-group">
-          {{ Form::text('residentialPlastic', '', array('class' => 'form-control', 'placeholder' => 'Plastic(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="residential" class="control-label">Organic: </label>
-			  <div class="form-group">
-          {{ Form::text('residentialOrganic', '', array('class' => 'form-control', 'placeholder' => 'Organic(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="residential" class="control-label">Other non-haz: </label>
-			  <div class="form-group">
-          {{ Form::text('residentialOther', '', array('class' => 'form-control', 'placeholder' => 'Non-Haz(%)')); }}
-			  </div>
-			</div>
+			<input type="text" class="form-control" id="otherNetArea" placeholder="Other Building Net Value">
 		      </td>
 		    </tr>
 		    <tr>
 		      <td colspan="2">
-			<div class="form-group">
-			  <label for="residential" class="control-label">Quantity: </label>
-        {{ Form::text('residentialQuantity', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
-			</div>
+			Override default operational waste values for Other Building
 		      </td>
 		    </tr>
-		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
-		  <fieldset id="pOtherBuildingsTypes1">
-		    <legend><span>Other Building Types</span></legend>
 		    <tr>
 		      <td>
-			<div class="form-inline" id="totalOtherBuildingsTypes1Gross">
-			  <label for="otherBuildingsTypes1" class="control-label">Gross Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('otherBuildingsTypes1GrossUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
+            {{ Form::select('overrideDOtherValue', [
+            'N/A' => 'N/A', 
+            'No' => 'No', 
+            'Yes' => 'Yes'],
             null, 
             ['class' => 'form-control']
           ) }}
-          {{ Form::text('otherBuildingsTypes1GrossArea', '', array('class' => 'form-control', 'placeholder' => 'Other Gross Value')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>
-			<div class="form-inline" id="totalOtherBuildingsTypes1Net">
-			  <label for="otherBuildingsTypes1" class="control-label">Net Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('otherBuildingsTypes1NetUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
-            null, 
-            ['class' => 'form-control']
-          ) }}
-          {{ Form::text('otherBuildingsTypes1NetArea', '', array('class' => 'form-control', 'placeholder' => 'Other Net Value')); }}
-			  </div>
-			</div>
 		      </td>
 		    </tr>
 		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
-		    <fieldset id="pOther1WasteComposition">
-		      <legend><span>Waste Composition and Generation for Other</span></legend>
+		  </table>
+		</form>
+		<form class="form col-xs-6 col-sm-6 col-md-6" style="min-width:460px;" role="form">
+		  <table class="table-condensed">
+		    <fieldset id="pOtherWasteComposition">
+		      <legend><span style="font-size: 18px;">Waste Composition and Generation for Other Building</span></legend>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="other1" class="control-label">Paper/Cardboard: </label>
-			  <div class="form-group">
-	          {{ Form::text('other1Paper', '', array('class' => 'form-control', 'placeholder' => 'Paper/Cardboard(%)')); }}
-			  </div>
-			</div>
+			
 		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="other1" class="control-label">Metal: </label>
-			  <div class="form-group">
-          {{ Form::text('other1Metal', '', array('class' => 'form-control', 'placeholder' => 'Metal(%)')); }}
-			  </div>
-			</div>
+		      <td style="text-align: center;">
+			Cardboard
 		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="other1" class="control-label">Glass: </label>
-			  <div class="form-group">
-	          {{ Form::text('other1Glass', '', array('class' => 'form-control', 'placeholder' => 'Glass(%)')); }}
-			  </div>
-			</div>
+		      <td style="text-align: center;">
+			Metal
+		      </td>
+		      <td style="text-align: center;">
+			Glass
+		      </td>
+		      <td style="text-align: center;">
+			Plastic
+		      </td>
+		      <td style="text-align: center;">
+			Organic
+		      </td>
+		      <td style="text-align: center;">
+			Other
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="other1" class="control-label">Plastic: </label>
-			  <div class="form-group">
-	        {{ Form::text('other1Plastic', '', array('class' => 'form-control', 'placeholder' => 'Plastic(%)')); }}
-			  </div>
-			</div>
+			Target
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="other1" class="control-label">Organic: </label>
-			  <div class="form-group">
-	          {{ Form::text('other1Organic', '', array('class' => 'form-control', 'placeholder' => 'Organic(%)')); }}
-			  </div>
-			</div>
+					<td>
+             {{ Form::text('otherDPaperT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="other1" class="control-label">Other non-haz: </label>
-			  <div class="form-group">
-          {{ Form::text('other1Other', '', array('class' => 'form-control', 'placeholder' => 'Non-Haz(%)')); }}
-			  </div>
-			</div>
+             {{ Form::text('otherDMetalT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
-		    </tr>
-		    <tr>
-		      <td colspan="2">
-			<div class="form-group">
-			  <label for="other1" class="control-label">Quantity: </label>
-        {{ Form::text('other1Quantity', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
-			</div>
-		      </td>
-		    </tr>
-		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-	      <form class="form" role="form">
-		<table class="table">
-		  <fieldset id="pOtherBuildingsTypes2">
-		    <legend><span>Other Building Types</span></legend>
-		    <tr>
 		      <td>
-			<div class="form-inline" id="totalOtherBuildingsTypes2Gross">
-			  <label for="otherBuildingsTypes2" class="control-label">Gross Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('otherBuildingsTypes2GrossUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
-            null, 
-            ['class' => 'form-control']
-          ) }}
-          {{ Form::text('otherBuildingsTypes2GrossArea', '', array('class' => 'form-control', 'placeholder' => 'Other Gross Value')); }}
-			  </div>
-			</div>
+             {{ Form::text('otherDGlassT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDPlasticT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDOrganicT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDOtherT', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-inline" id="totalOtherBuildingsTypes2Net">
-			  <label for="otherBuildingsTypes2" class="control-label">Net Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('otherBuildingsTypes2NetUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
-            null, 
-            ['class' => 'form-control']
-          ) }}
-	        {{ Form::text('otherBuildingsTypes2NetArea', '', array('class' => 'form-control', 'placeholder' => 'Other Net Value')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
-		    <fieldset id="pOther2WasteComposition">
-		      <legend><span>Waste Composition and Generation for Other</span></legend>
-		    <tr>
-		      <td>
-			<div class="form-group">
-			  <label for="other2" class="control-label">Paper/Cardboard: </label>
-			  <div class="form-group">
-          {{ Form::text('other2Paper', '', array('class' => 'form-control', 'placeholder' => 'Paper/Cardboard(%)')); }}
-			  </div>
-			</div>
+			Propose
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="other2" class="control-label">Metal: </label>
-			  <div class="form-group">
-          {{ Form::text('other2Metal', '', array('class' => 'form-control', 'placeholder' => 'Metal(%)')); }}
-			  </div>
-			</div>
+             {{ Form::text('otherDPaperP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="other2" class="control-label">Glass: </label>
-			  <div class="form-group">
-          {{ Form::text('other2Glass', '', array('class' => 'form-control', 'placeholder' => 'Glass(%)')); }}
-			  </div>
-			</div>
+             {{ Form::text('otherDMetalP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDGlassP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDPlasticP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDOrganicP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDOtherP', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		    </tr>
 		    <tr>
 		      <td>
-			<div class="form-group">
-			  <label for="other2" class="control-label">Plastic: </label>
-			  <div class="form-group">
-          {{ Form::text('other2Plastic', '', array('class' => 'form-control', 'placeholder' => 'Plastic(%)')); }}
-			  </div>
-			</div>
+			Change
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="other2" class="control-label">Organic: </label>
-			  <div class="form-group">
-          {{ Form::text('other2Organic', '', array('class' => 'form-control', 'placeholder' => 'Organic(%)')); }}
-			  </div>
-			</div>
+             {{ Form::text('otherDPaperC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		      <td>
-			<div class="form-group">
-			  <label for="other2" class="control-label">Other non-haz: </label>
-			  <div class="form-group">
-          {{ Form::text('other2Other', '', array('class' => 'form-control', 'placeholder' => 'Non-Haz(%)')); }}
-			  </div>
-			</div>
+             {{ Form::text('otherDMetalC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDGlassC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDPlasticC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDOrganicC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDOtherC', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
 		      </td>
 		    </tr>
 		    <tr>
-		      <td colspan="2">
-			<div class="form-group">
-			  <label for="other2" class="control-label">Quantity: </label>
-        {{ Form::text('other2Quantity', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
-			</div>
+		      <td>
+			Actual
+		      </td>
+		      <td>
+             {{ Form::text('otherDPaperA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDMetalA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDGlassA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDPlasticA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDOrganicA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		      <td>
+             {{ Form::text('otherDOtherA', '', array('class' => 'form-control', 'style' => 'text-align: center; width: 60px; margin: auto;', 'placeholder' => '%')); }}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>
+			Quantity
+		      </td>
+		      <td colspan="3">
+            {{ Form::text('otherDQuantity', '', array('class' => 'form-control', 'style' => 'margin: auto;', 'placeholder' => 'kg/m2/year')); }}
 		      </td>
 		    </tr>
 		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-	      <form class="form" role="form">
-		<table class="table">
-		  <fieldset id="pOtherBuildingsTypes3">
-		    <legend><span>Other Building Types</span></legend>
-		    <tr>
-		      <td>
-			<div class="form-inline" id="totalOtherBuildingsTypes3Gross">
-			  <label for="otherBuildingsTypes3" class="control-label">Gross Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('otherBuildingsTypes3GrossUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
-            null, 
-            ['class' => 'form-control']
-          ) }}
-          {{ Form::text('otherBuildingsTypes3GrossArea', '', array('class' => 'form-control', 'placeholder' => 'Other Gross Value')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>
-			<div class="form-inline" id="totalOtherBuildingsTypes3Net">
-			  <label for="otherBuildingsTypes3" class="control-label">Net Floor Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('otherBuildingsTypes3NetUnit', [
-            'N/A' => 'Unit', 
-            'Square Metre' => 'Square Metre', 
-            'Square Kilometre' => 'Square Kilometre',
-            'Square Mile' => 'Square Mile',
-            'Square Yard' => 'Square Yard'], //??
-            null, 
-            ['class' => 'form-control']
-          ) }}
-          {{ Form::text('otherBuildingsTypes3NetArea', '', array('class' => 'form-control', 'placeholder' => 'Other Net Value')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-		<form class="form" role="form">
-		  <table class="table">
-		    <fieldset id="pOther3WasteComposition">
-		      <legend><span>Waste Composition and Generation for Other</span></legend>
-		    <tr>
-		      <td>
-			<div class="form-group">
-			  <label for="other3" class="control-label">Paper/Cardboard: </label>
-			  <div class="form-group">
-	          {{ Form::text('other3Paper', '', array('class' => 'form-control', 'placeholder' => 'Paper/Cardboard(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="other3" class="control-label">Metal: </label>
-			  <div class="form-group">
-			    <input type="text" class="form-control" id="other3Metal" placeholder="Metal(%)">
-          {{ Form::text('other3Metal', '', array('class' => 'form-control', 'placeholder' => 'Metal(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="other3" class="control-label">Glass: </label>
-			  <div class="form-group">
-          {{ Form::text('other3Glass', '', array('class' => 'form-control', 'placeholder' => 'Glass(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>
-			<div class="form-group">
-			  <label for="other3" class="control-label">Plastic: </label>
-			  <div class="form-group">
-          {{ Form::text('other3Plastic', '', array('class' => 'form-control', 'placeholder' => 'Plastic(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="other3" class="control-label">Organic: </label>
-			  <div class="form-group">
-          {{ Form::text('other3Organic', '', array('class' => 'form-control', 'placeholder' => 'Organic(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		      <td>
-			<div class="form-group">
-			  <label for="other3" class="control-label">Other non-haz: </label>
-			  <div class="form-group">
-	          {{ Form::text('other3Other', '', array('class' => 'form-control', 'placeholder' => 'Non-Haz(%)')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td colspan="2">
-			<div class="form-group">
-			  <label for="other3" class="control-label">Quantity: </label>
-	        {{ Form::text('other3Quantity','', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
-			</div>
-		      </td>
-		    </tr>
-		  </fieldset>
-		</table>
-	      </form>
-	    </div>
-	      <div class="table-responsive col-md-6">
-	      <form class="form" role="form">
-		<table class="table">
-		  <fieldset id="pLandscape">
-		    <legend><span>Other Building Types</span></legend>
-		    <tr>
-		      <td>
-			<div class="form-inline" id="totalLandscapeArea">
-			  <label for="plandscape" class="control-label">Total Landscape Area: </label>
-			  <div class="form-group">
-			    {{ Form::select('landscapeAreaUnit', [
-              'N/A' => 'Unit', 
-              'Square Metre' => 'Square Metre', 
-              'Square Kilometre' => 'Square Kilometre',
-              'Square Mile' => 'Square Mile',
-              'Square Yard' => 'Square Yard'], //??
-              null, 
-              ['class' => 'form-control']
-            ) }}
-          {{ Form::text('landscapeAreaValue', '', array('class' => 'form-control', 'placeholder' => 'Landscape Area Value')); }}
-			  </div>
-			</div>
-		      </td>
-		    </tr>
-		  </fieldset>
-		</table>
-	      </form>
-	    </div>
+		  </table>
+		</form>
+	      </div>
 	      <div class="table-responsive col-md-6">
 		<form class="form" role="form">
 		  <table class="table">
@@ -932,7 +822,7 @@ class="active"
 		      <td colspan="2">
 			<div class="form-group">
 			  <label for="landscape" class="control-label">Quantity: </label>
-        {{ Form::text('landscapeQuantity', '', array('class' => 'form-control', 'placeholder' => 'kg/m2/year')); }}
+        {{ Form::text('landscapeDQuantity', '', array('class' => 'form-control', 'style' => 'margin: auto;', 'placeholder' => 'kg/m2/year')); }}
 			</div>
 		      </td>
 		    </tr>
@@ -941,8 +831,8 @@ class="active"
 	      </form>
 	    </div>
 	  </div>
-        </div>
-      </div>
+   </div>
+ </div>
 
 	  <!------------------------------------------------------------------------------------------------------------------------------------------------------>
 	<div class="panel panel-default">

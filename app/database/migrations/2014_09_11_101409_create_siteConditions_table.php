@@ -12,7 +12,7 @@ class CreateSiteConditionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('SiteConditions', function($table) {
+		Schema::create('siteConditions', function($table) {
       $table->increments('id');
       $table->integer('project_id');
       $table->foreign('project_id')->references('id')->on('projects');
@@ -31,7 +31,7 @@ class CreateSiteConditionsTable extends Migration {
       $table->string('nearestCommercial')->nullable();
       $table->string('nearestIndustrial')->nullable();
       $table->string('waterways')->nullable();
-      $table->string('vegitation')->nullable();
+      $table->string('vegetation')->nullable();
       $table->string('fauna')->nullable();
       $table->string('acidSulfateSoils')->nullable();
       $table->string('qualityAgricultureLand')->nullable();

@@ -9,19 +9,21 @@ class OverviewController extends \BaseController {
 	 */
   public function index()
   {
+    $id = '';
+    return View::make('portal.overview', compact('id'));
   }
 
-  
+
   public function update($id)
   {
     $input = Input::all();
     if(is_null(DB::table('overviews')->where('project_id', $id)->first()))
-       {
-         $overview = new Overview;
-         $overview->project_id = ($id);
-       }
+    {
+      $overview = new Overview;
+      $overview->project_id = ($id);
+    }
     else
-       $overview = DB::table('overviews')->where('project_id', $id)->first();
+      $overview = DB::table('overviews')->where('project_id', $id)->first();
     $overview->projectName = $input['projectName'];
     $overview->startDate = $input['startDate'];
     $overview->approvalCost = $input['approvalCost'];

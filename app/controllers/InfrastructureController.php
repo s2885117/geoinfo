@@ -9,86 +9,92 @@ class InfrastructureController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('portal.infrastructure');
+    //
 	}
 	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
-	public function storeFirst()
-	{
-		$input = Input::all();
-    $firstInfrastructure = new FirstInfrastructure;
-    $firstInfrastructure->project_id;
-    $firstInfrastructure->accessRoadNo = $input['accessRoadNo'];
-    $firstInfrastructure->accessRoadD = $input['accessRoadD'];
-    $firstInfrastructure->infrastructureCorridorsNo = $input['ifrastructureCorridorsNo'];
-    $firstInfrastructure->infrastructureCorridorsD = $input['ifrastructureCorridorsD'];
-    $firstInfrastructure->fixedIntrastuctureNo = $input['fixedIntrastuctureNo'];
-    $firstInfrastructure->fixedIntrastuctureD = $input['fixedIntrastuctureD'];
-    $firstInfrastructure->waterTanksNo = $input['waterTanksNo'];
-    $firstInfrastructure->waterTanksD = $input['waterTanksD'];
-    $firstInfrastructure->siteOfficeNo = $input['siteOfficeNo'];
-    $firstInfrastructure->siteOfficeD = $input['siteOfficeD'];
-    $firstInfrastructure->cummunicationsTowerNo = $input['cummunicationsTowerNo'];
-    $firstInfrastructure->cummunicationsTowerD = $input['cummunicationsTowerD'];
-    $firstInfrastructure->wasteDisposalNo = $input['wasteDisposalNo'];
-    $firstInfrastructure->wasteDisposalD = $input['wasteDisposalD'];
-    $firstInfrastructure->waterTreatmentNo = $input['waterTreatmentNo'];
-    $firstInfrastructure->waterTreatmentD = $input['waterTreatmentD'];
-    $firstInfrastructure->sewerageTreatmentNo = $input['sewerageTreatmentNo'];
-    $firstInfrastructure->sewerageTreatmentD = $input['sewerageTreatmentD'];
-    $firstInfrastructure->renewableEnergyNo = $input['renewableEnergyNo'];
-    $firstInfrastructure->renewableEnergyD = $input['renewableEnergyD'];
-    $firstInfrastructure->waterFeatureNo = $input['waterFeatureNo'];
-    $firstInfrastructure->waterFeatureD = $input['waterFeatureD'];
-    $firstInfrastructure->exhaustStackNo = $input['exhaustStackNo'];
-    $firstInfrastructure->exhaustStackD = $input['exhaustStackD'];
-    $firstInfrastructure->cummunityCoolingNo = $input['cummunityCoolingNo'];
-    $firstInfrastructure->cummunityCoolingD = $input['cummunityCoolingD'];
-    $firstInfrastructure->vehicleTurnaroundsNo = $input['vehicleTurnaroundsNo'];
-    $firstInfrastructure->vehicleTurnaroundsD = $input['vehicleTurnaroundsD'];
-    $firstInfrastructure->aboveCarParkingNo = $input['aboveCarParkingNo'];
-    $firstInfrastructure->aboveCarParkingD = $input['aboveCarParkingD'];
-    $firstInfrastructure->underCarParkingNo = $input['underCarParkingNo'];
-    $firstInfrastructure->underCarParkingD = $input['underCarParkingD'];
-    $firstInfrastructure->floodMitigationNo = $input['floodMitigationNo'];
-    $firstInfrastructure->floodMitigationD = $input['floodMitigationD'];
-    $firstInfrastructure->irrigationAreasNo = $input['irrigationAreasNo'];
-    $firstInfrastructure->irrigationAreasD = $input['irrigationAreasD'];
-    $firstInfrastructure->irrigationsFacilitiesNo = $input['irrigationsFacilitiesNo'];
-    $firstInfrastructure->irrigationsFacilitiesD = $input['irrigationsFacilitiesD'];
-    $firstInfrastructure->waterPipesNo = $input['waterPipesNo'];
-    $firstInfrastructure->waterPipesD = $input['waterPipesD'];
-    $firstInfrastructure->retentionSystemsNo = $input['retentionSystemsNo'];
-    $firstInfrastructure->retentionSystemsD = $input['retentionSystemsD'];
-    $firstInfrastructure->detentionSystemsNo = $input['detentionSystemsNo'];
-    $firstInfrastructure->detentionSystemsD = $input['detentionSystemsD'];
-    $firstInfrastructure->retainingWallNo = $input['retainingWallNo'];
-    $firstInfrastructure->retainingWallD = $input['retainingWallD'];
-    $firstInfrastructure->save(); 
-	}
-
-  public function storeSecond()
-	{
-		$input = Input::all();
-    $secondInfrastructure = new SecondInfrastructure;
-    $secondInfrastructure->project_id;
-    $secondInfrastructure->earthworksNo = $input['earthworksNo'];
-    $secondInfrastructure->earthworksD = $input['earthworksD'];
-    $secondInfrastructure->accessRoadsNo = $input['accessRoadsNo'];
-    $secondInfrastructure->accessRoadsD = $input['accessRoadsD'];
-    $secondInfrastructure->constructionCampsNo = $input['constructionCampsNo'];
-    $secondInfrastructure->constructionCampsD = $input['constructionCampsD'];
-    $secondInfrastructure->layDownAreasNo = $input['layDownAreasNo'];
-    $secondInfrastructure->layDownAreasD = $input['layDownAreasD'];
-    $secondInfrastructure->operationalSiteOfficeNo = $input['operationalSiteOfficeNo'];
-    $secondInfrastructure->operationalSiteOfficeD = $input['operationalSiteOfficeD'];
-    $secondInfrastructure->truckTurnaroundsNo = $input['truckTurnaroundsNo'];
-    $secondInfrastructure->truckTurnaroundsD = $input['truckTurnaroundsD'];
-    $secondInfrastructure->workshopsNo = $input['workshopsNo'];
-    $secondInfrastructure->workshopsD = $input['workshopsD'];
-    $secondInfrastructure->save(); 
-	}
+  
+  public function update($id)
+  {
+    $input = Input::all();
+    if(is_null(DB::table('infrastructures')->where('project_id', $id)->first()))
+    {
+      $infrastructure = new Infrastructure;
+      $infrastructure->project_id = ($id);
+    }
+    else
+      $infrastructure = DB::table('infrastructures')->where('project_id', $id)->first();
+    $infrastructure->accessRoadNo = $input['accessRoadNo'];
+    $infrastructure->accessRoadD = $input['accessRoadD'];
+    $infrastructure->infrastructureCorridorsNo = $input['ifrastructureCorridorsNo'];
+    $infrastructure->infrastructureCorridorsD = $input['ifrastructureCorridorsD'];
+    $infrastructure->fixedIntrastuctureNo = $input['fixedIntrastuctureNo'];
+    $infrastructure->fixedIntrastuctureD = $input['fixedIntrastuctureD'];
+    $infrastructure->waterTanksNo = $input['waterTanksNo'];
+    $infrastructure->waterTanksD = $input['waterTanksD'];
+    $infrastructure->siteOfficeNo = $input['siteOfficeNo'];
+    $infrastructure->siteOfficeD = $input['siteOfficeD'];
+    $infrastructure->cummunicationsTowerNo = $input['cummunicationsTowerNo'];
+    $infrastructure->cummunicationsTowerD = $input['cummunicationsTowerD'];
+    $infrastructure->wasteDisposalNo = $input['wasteDisposalNo'];
+    $infrastructure->wasteDisposalD = $input['wasteDisposalD'];
+    $infrastructure->waterTreatmentNo = $input['waterTreatmentNo'];
+    $infrastructure->waterTreatmentD = $input['waterTreatmentD'];
+    $infrastructure->sewerageTreatmentNo = $input['sewerageTreatmentNo'];
+    $infrastructure->sewerageTreatmentD = $input['sewerageTreatmentD'];
+    $infrastructure->renewableEnergyNo = $input['renewableEnergyNo'];
+    $infrastructure->renewableEnergyD = $input['renewableEnergyD'];
+    $infrastructure->waterFeatureNo = $input['waterFeatureNo'];
+    $infrastructure->waterFeatureD = $input['waterFeatureD'];
+    $infrastructure->exhaustStackNo = $input['exhaustStackNo'];
+    $infrastructure->exhaustStackD = $input['exhaustStackD'];
+    $infrastructure->cummunityCoolingNo = $input['cummunityCoolingNo'];
+    $infrastructure->cummunityCoolingD = $input['cummunityCoolingD'];
+    $infrastructure->vehicleTurnaroundsNo = $input['vehicleTurnaroundsNo'];
+    $infrastructure->vehicleTurnaroundsD = $input['vehicleTurnaroundsD'];
+    $infrastructure->aboveCarParkingNo = $input['aboveCarParkingNo'];
+    $infrastructure->aboveCarParkingD = $input['aboveCarParkingD'];
+    $infrastructure->underCarParkingNo = $input['underCarParkingNo'];
+    $infrastructure->underCarParkingD = $input['underCarParkingD'];
+    $infrastructure->floodMitigationNo = $input['floodMitigationNo'];
+    $infrastructure->floodMitigationD = $input['floodMitigationD'];
+    $infrastructure->irrigationAreasNo = $input['irrigationAreasNo'];
+    $infrastructure->irrigationAreasD = $input['irrigationAreasD'];
+    $infrastructure->irrigationsFacilitiesNo = $input['irrigationsFacilitiesNo'];
+    $infrastructure->irrigationsFacilitiesD = $input['irrigationsFacilitiesD'];
+    $infrastructure->waterPipesNo = $input['waterPipesNo'];
+    $infrastructure->waterPipesD = $input['waterPipesD'];
+    $infrastructure->retentionSystemsNo = $input['retentionSystemsNo'];
+    $infrastructure->retentionSystemsD = $input['retentionSystemsD'];
+    $infrastructure->detentionSystemsNo = $input['detentionSystemsNo'];
+    $infrastructure->detentionSystemsD = $input['detentionSystemsD'];
+    $infrastructure->retainingWallNo = $input['retainingWallNo'];
+    $infrastructure->retainingWallD = $input['retainingWallD'];
+    $infrastructure->earthworksNo = $input['earthworksNo'];
+    $infrastructure->earthworksD = $input['earthworksD'];
+    $infrastructure->accessRoadsNo = $input['accessRoadsNo'];
+    $infrastructure->accessRoadsD = $input['accessRoadsD'];
+    $infrastructure->constructionCampsNo = $input['constructionCampsNo'];
+    $infrastructure->constructionCampsD = $input['constructionCampsD'];
+    $infrastructure->layDownAreasNo = $input['layDownAreasNo'];
+    $infrastructure->layDownAreasD = $input['layDownAreasD'];
+    $infrastructure->operationalSiteOfficeNo = $input['operationalSiteOfficeNo'];
+    $infrastructure->operationalSiteOfficeD = $input['operationalSiteOfficeD'];
+    $infrastructure->truckTurnaroundsNo = $input['truckTurnaroundsNo'];
+    $infrastructure->truckTurnaroundsD = $input['truckTurnaroundsD'];
+    $infrastructure->workshopsNo = $input['workshopsNo'];
+    $infrastructure->workshopsD = $input['workshopsD'];
+    $infrastructure->save();
+    
+    return View::make('portal.infrastructure', compact('infrastructure', 'id'));
+  }
+  
+  public function show($id)
+  {
+    $infrastructure = DB::table('infrastructures')->where('project_id', $id)->first();
+    return View::make('portal.infrastructure', compact('infrastucture', 'id'));
+  }
 }

@@ -38,10 +38,13 @@
           <li><a href="#">Learn More</a></li>
           @if (!Auth::check())
           <li>{{ link_to_route('user.index', "Sign In") }}</li>
-          @else
+          @elseif(Auth::check() && Auth::user()->admin == true)
           <li>{{ link_to_route('company.index', "Company") }}</li>
+          @endif
+          @if(Auth::check())
           <li>{{ link_to_route('user.logout', "Logout") }}</li>
           @endif
+          <li>{{ link_to_route('overview.index', "TEMP ACCESS") }}</li>
         </ul>
         @if (Auth::check())
         <a href="{{ url('userProjects') }}"><button type="button" class="btn btn-success" style="background-color: #e6595e; border-color: #e6595e;">My Projects</button></a><br/><br/>

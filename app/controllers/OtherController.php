@@ -14,52 +14,6 @@ class OtherController extends \BaseController {
 
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
@@ -67,20 +21,25 @@ class OtherController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::all();
+    if(is_null(DB::table('others')->where('project_id', $id)->first()))
+       {
+         $other = new Other;
+         $other->project_id = ($id);
+       }
+    else
+       $other = DB::table('others')->where('project_id', $id)->first();
+
+    $other->save(); 
+    
+    return View::make('portal.other', compact('other', 'id'));
 	}
 
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+  public function show($id)
+  {
+    $other = DB::table('others')->where('project_id', $id)->first();
+    return View::make('portal.other', compact('other', 'id'));
+  }
 
 
 }

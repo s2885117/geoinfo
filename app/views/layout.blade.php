@@ -42,13 +42,13 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li @yield('projectState')>{{ link_to_route('overview.index', 'Project Overview') }}</li>
-            <li @yield('siteState')>{{ link_to_route('siteConditions.index', 'Site Conditions') }}</li>
-            <li @yield('infraState')>{{ link_to_route('infrastructure.index', 'Infrastructure') }}</li>
-            <li @yield('resourceState')>{{ link_to_route('accessResources.index', 'Access to Resources') }}</li>
-            <li @yield('activState')>{{ link_to_route('approvalActivities.index', 'Approval Activities') }}</li>
-            <li @yield('constructState')>{{ link_to_route('construction.index', 'Construction Waste') }}</li>
-            <li @yield('otherState')>{{ link_to_route('other.index', 'Other') }}</li>
+            <li @yield('projectState')>{{ link_to_route('overview.show', 'Project Overview', array($id)) }}</li>
+            <li @yield('siteState')>{{ link_to_route('siteConditions.show', 'Site Conditions', array($id)) }}</li>
+            <li @yield('infraState')>{{ link_to_route('infrastructure.show', 'Infrastructure', array($id)) }}</li>
+            <li @yield('resourceState')>{{ link_to_route('accessResources.show', 'Access to Resources', array($id)) }}</li>
+            <li @yield('activState')>{{ link_to_route('approvalActivities.show', 'Approval Activities', array($id)) }}</li>
+            <li @yield('constructState')>{{ link_to_route('construction.show', 'Construction Waste', array($id)) }}</li>
+            <li @yield('otherState')>{{ link_to_route('other.show', 'Other', array($id)) }}</li>
           </ul>
         </div>
       </div>
