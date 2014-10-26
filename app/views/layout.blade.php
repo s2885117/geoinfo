@@ -11,7 +11,7 @@
     {{ HTML::style('css/userInput.css') }}
       
     <!--Google Maps-->
-    {{ HTML::script('https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places') }}
+    {{ HTML::script('https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=places') }}
     
 
     
@@ -38,17 +38,17 @@
             <span class="icon-bar"></span>
           </button>
           <!--<a href="/project/geoinfo/public">{{ HTML::image("images/leftLogo.png", "Logo", array('style' => 'margin-left: -20px;')) }}</a>-->
-          <h3><a href="/">Habutek</a></h3>
+          <h3>{{ link_to_route('index.index', 'HaBUtek') }}</h3>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li @yield('projectState')>{{ link_to_route('overview.show', 'Project Overview', array($id)) }}</li>
+            <li @yield('activState')>{{ link_to_route('activities.show', 'Approval Activities', array($id)) }}</li>
             <li @yield('siteState')>{{ link_to_route('siteConditions.show', 'Site Conditions', array($id)) }}</li>
             <li @yield('infraState')>{{ link_to_route('infrastructure.show', 'Infrastructure', array($id)) }}</li>
-            <li @yield('resourceState')>{{ link_to_route('accessResources.show', 'Access to Resources', array($id)) }}</li>
-            <li @yield('activState')>{{ link_to_route('approvalActivities.show', 'Approval Activities', array($id)) }}</li>
-            <li @yield('constructState')>{{ link_to_route('construction.show', 'Construction Waste', array($id)) }}</li>
-            <li @yield('otherState')>{{ link_to_route('other.show', 'Other', array($id)) }}</li>
+            <!--<li @yield('resourceState')>{{ link_to_route('accessResources.show', 'Access to Resources', array($id)) }}</li>-->
+           <!-- <li @yield('constructState')>{{ link_to_route('construction.show', 'Construction Waste', array($id)) }}</li>-->
+          <!--  <li @yield('otherState')>{{ link_to_route('other.show', 'Other', array($id)) }}</li>-->
           </ul>
         </div>
       </div>
@@ -57,23 +57,24 @@
       <div class="row">
         <div class="sidebar">
           <ul class="nav nav-sidebar">
-            <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Biodiversity</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Climate</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Health</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-usd"></span> Investment</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Labour Productivity</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-picture"></span> Landscape</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-map-marker"></span> Place</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span> Property</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-refresh"></span> Renewables</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-road"></span> Transport</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-arrow-right"></span> Walkability</a></li>
-            <li><a href="{{ url('waste') }}"><span class="glyphicon glyphicon-trash"></span> Waste</a></li>   
-            <li><a href="#"><span class="glyphicon glyphicon-tint"></span> Water</a></li>
+            <li><a href="{{ url('biodiversity', array($id)) }}"><span class="glyphicon glyphicon-globe"></span> Biodiversity</a></li>
+            <li><a href="{{ url('climate', array($id)) }}"><span class="glyphicon glyphicon-cloud"></span> Climate</a></li>
+            <li><a href="{{ url('health', array($id)) }}"><span class="glyphicon glyphicon-heart"></span> Health</a></li>
+            <li><a href="{{ url('investment', array($id)) }}"><span class="glyphicon glyphicon-usd"></span> Investment</a></li>
+            <li><a href="{{ url('labour_productivity', array($id)) }}"><span class="glyphicon glyphicon-cog"></span> Labour Productivity</a></li>
+            <li><a href="{{ url('landscape', array($id)) }}"><span class="glyphicon glyphicon-picture"></span> Landscape</a></li>
+            <li><a href="{{ url('place', array($id)) }}"><span class="glyphicon glyphicon-map-marker"></span> Place</a></li>
+            <li><a href="{{ url('property', array($id)) }}"><span class="glyphicon glyphicon-home"></span> Property</a></li>
+            <li><a href="{{ url('renewables', array($id)) }}"><span class="glyphicon glyphicon-refresh"></span> Renewables</a></li>
+            <li><a href="{{ url('transport', array($id)) }}"><span class="glyphicon glyphicon-road"></span> Transport</a></li>
+            <li><a href="{{ url('walkability', array($id)) }}"><span class="glyphicon glyphicon-arrow-right"></span> Walkability</a></li>
+            <li><a href="{{ url('construction_indicators', array($id)) }}"><span class="glyphicon glyphicon-trash"></span> Construction Indicators</a></li> 
+            <li><a href="{{ url('operations', array($id))}}"><span class="glyphicon glyphicon-wrench"></span> Operations</a></li> 
+            <li><a href="{{ url('water', array($id)) }}"><span class="glyphicon glyphicon-tint"></span> Water</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="#"><span class="glyphicon glyphicon-export"></span> Export Scenario</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-align-justify"></span> Summary</a></li>
+            <li><a href="{{ url('generate_summary', array($id)) }}"><span class="glyphicon glyphicon-align-justify"></span> Summary</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-ok"></span> Final Report</a></li>
           </ul>
         </div>

@@ -2,20 +2,13 @@
 
 class OverviewController extends \BaseController {
 
-  /**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-  public function index()
-  {
-    $id = '';
-    return View::make('portal.overview', compact('id'));
-  }
+  public function index() {}
 
-
-  public function update($id)
+  //Stores the input from the user, if no row exsists with project_id create a new one, if it does retrieve that row and store values into that row
+  public function update()
   {
+    $project = Project::find(Auth::user()->project_id);
+    $id = $project->id;
     $input = Input::all();
     if(is_null(DB::table('overviews')->where('project_id', $id)->first()))
     {
@@ -23,7 +16,11 @@ class OverviewController extends \BaseController {
       $overview->project_id = ($id);
     }
     else
-      $overview = DB::table('overviews')->where('project_id', $id)->first();
+    {
+      $overview = Project::find($id)->overview;
+    }
+    
+    $overview->ProjDescComment = $input['ProjDescComment'];
     $overview->projectName = $input['projectName'];
     $overview->startDate = $input['startDate'];
     $overview->approvalCost = $input['approvalCost'];
@@ -95,14 +92,71 @@ class OverviewController extends \BaseController {
     $overview->mLengthPublicTransport = $input['mLengthPublicTransport'];
     $overview->publicTransport = $input['publicTransport'];
     $overview->mLenthFacilities = $input['mLenthFacilities'];
+    
+    //Added comment areas in each section.
+    $overview->BuildResFormComment = $input['BuildResFormComment'];
+    $overview->BuildComFormComment = $input['BuildComFormComment'];
+    $overview->BuildIndFormComment = $input['BuildIndFormComment'];
+    $overview->DevFormComment = $input['DevFormComment'];
+    
+    $overview->BuildResTotalUnit = $input['BuildResTotalUnit'];
+    $overview->BuildComTotalUnit = $input['BuildComTotalUnit'];
+    $overview->BuildIndTotalUnit = $input['BuildIndTotalUnit'];
+    
+    $overview->residentialGrossUnit = $input['residentialGrossUnit'];
+    $overview->residentialOGrossArea = $input['residentialOGrossArea'];
+    $overview->residentialNetUnit = $input['residentialNetUnit'];
+    $overview->residentialSiteCover = $input['residentialSiteCover'];
+    
+    $overview->officeGrossUnit = $input['officeGrossUnit'];
+    $overview->officeOGrossArea = $input['officeOGrossArea'];
+    $overview->officeNetUnit = $input['officeNetUnit'];
+    $overview->officeSiteCover = $input['officeSiteCover'];
+    
+    $overview->retailGrossUnit = $input['retailGrossUnit'];
+    $overview->retailGrossArea = $input['retailGrossArea'];
+    $overview->retailNetUnit = $input['retailNetUnit'];
+    $overview->retailSite = $input['retailSite'];
+    
+    $overview->schoolGrossUnit = $input['schoolGrossUnit'];
+    $overview->schoolGrossArea = $input['schoolGrossArea'];
+    $overview->schoolNetUnit = $input['schoolNetUnit'];
+    $overview->schoolSite = $input['schoolSite'];
+
+    $overview->hospitalGrossUnit = $input['hospitalGrossUnit'];
+    $overview->hospitalGrossArea = $input['hospitalGrossArea'];
+    $overview->hospitalNetUnit = $input['hospitalNetUnit'];
+    $overview->hospitalSite = $input['hospitalSite']; 
+    
+    $overview->communityGrossUnit = $input['communityGrossUnit'];
+    $overview->communityGrossArea = $input['communityGrossArea'];
+    $overview->communityNetUnit = $input['communityNetUnit'];
+    $overview->communitySite = $input['communitySite']; 
+    
+    $overview->otherGrossUnit = $input['otherGrossUnit'];
+    $overview->otherGrossArea = $input['otherGrossArea'];
+    $overview->otherNetUnit = $input['otherNetUnit'];
+    $overview->otherSite = $input['otherSite']; 
+    
+    $overview->nResCarPark = $input['nResCarPark'];
+    $overview->nComCarPark = $input['nComCarPark'];
+    $overview->nIndCarPark = $input['nIndCarPark'];
+    $overview->nInfraCarPark = $input['nInfraCarPark'];
+
+     
     $overview->save(); 
     return View::make('portal.overview', compact('overview', 'id'));
   }
-  
 
-  public function show($id)
+  public function show()
   {
+    if ((Auth::user()) !== null)
+      {
+    $project = Project::find(Auth::user()->project_id);
+    $id = $project->id;
     $overview = DB::table('overviews')->where('project_id', $id)->first();
     return View::make('portal.overview', compact('overview', 'id'));
+    }
+    else return Redirect::to('index');
   }
 }

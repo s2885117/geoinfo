@@ -2,23 +2,9 @@
 
 class OtherController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return View::make('portal.other');
-	}
+	public function index() {}
 
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+  //Stores the input from the user, if no row exsists with project_id create a new one, if it does retrieve that row and store values into that row
 	public function update($id)
 	{
 		$input = Input::all();
@@ -37,8 +23,12 @@ class OtherController extends \BaseController {
 
   public function show($id)
   {
+    if ((Auth::user()) !== null)
+      {
     $other = DB::table('others')->where('project_id', $id)->first();
     return View::make('portal.other', compact('other', 'id'));
+    }
+    else return Redirect::to('index');
   }
 
 

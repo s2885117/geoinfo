@@ -73,7 +73,7 @@ body {
 .main {
 	position: relative;
 	display: block;
-	margin-left: 200px;
+	margin-left: 220px;
 	margin-right: 20px;
 	
 }
@@ -138,6 +138,16 @@ body {
 	
       }
 
+/* Main marketing message and sign up button */
+.company {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.company .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
 html, body, tr, td, #googleMap {
         height: 100%;
         margin: 0px;
@@ -186,4 +196,11 @@ html, body, tr, td, #googleMap {
         font-size: 13px;
         font-weight: 300;
       }
+
+/* Learn more on waste page */
+.LearnMore {
+  text-align: justify;
+  padding: 10px;
+  margin-top: 70px;
+}
 

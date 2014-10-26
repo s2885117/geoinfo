@@ -112,9 +112,12 @@ function checkSiteFields(){
     
     if(document.getElementById('singleSite').checked){
         document.getElementById('singleSiteSummary').hidden=false;
+      document.getElementById('developmentFormat').hidden=false;
+      
     }
     else {
         document.getElementById('singleSiteSummary').hidden=true;
+      document.getElementById('developmentFormat').hidden=true;
     }
 
 }
@@ -122,7 +125,7 @@ function checkLandFields(){
     
     if(document.getElementById('subdivisionSite').checked){
         document.getElementById('landSubdivisionSite').hidden=false;
-        document.getElementById('developmentFormat').hidden=false;
+      document.getElementById('developmentFormat').hidden=false;
     }
     else {
         document.getElementById('landSubdivisionSite').hidden=true;

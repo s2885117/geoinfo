@@ -4,10 +4,15 @@ class CompanyController extends \BaseController {
 
   public function index()
   {
+    if ((Auth::user()) !== null)
+      {
     $company = User::find(Auth::user()->id)->company;
     $projects = Company::find($company->id)->projects;
     return View::make('company.company', compact('company', 'projects'));
+    }
+    else return Redirect::to('index');
   }
+  
   public function store()
   {
     $input = Input::all();
@@ -15,8 +20,22 @@ class CompanyController extends \BaseController {
     $company->company_name = $input['company_name'];
     $company->company_address = $input['company_address'];
     $company->user_id = Auth::user()->id;
-    $company->save();
-    return View::make('project.projectCreate');
+    $rules = array(
+      'company_name' => 'required',
+      'company_address' => 'required'
+    );
+    $validation = Validator::make($input, $rules);
+
+    if($validation->passes())
+    {
+      
+      $company->save();
+      return View::make('project.projectCreate');
+    } 
+    else 
+    {
+      return Redirect::to('companyCreate')->withErrors($validation)->withInput();
+    }
   }
   
   public function edit()

@@ -2,38 +2,12 @@
 
 class ContructionController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+	public function index() {}
+
+  public function update()
 	{
-		return View::make('portal.contructionWaste');
-	}
-
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-public function show($id)
-  {
-    $construction = DB::table('constructions')->where('project_id', $id)->first();
-    return View::make('portal.construction', compact('construction', 'id'));
-  }
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
+    $project = Project::find(Auth::user()->project_id);
+    $id = $project->id;
 		$input = Input::all();
     if(is_null(DB::table('constructions')->where('project_id', $id)->first()))
        {
@@ -41,12 +15,21 @@ public function show($id)
          $construction->project_id = ($id);
        }
     else
-       $construction = DB::table('constructions')->where('project_id', $id)->first();
-
-    $construction->save(); 
-    
+       $construction = Project::find($id)->construction;
     return View::make('portal.constructionWaste', compact('construction', 'id'));
 	}
+  
+  public function show()
+  {
+    if ((Auth::user()) !== null)
+      {
+    $project = Project::find(Auth::user()->project_id);
+    $id = $project->id;
+    $construction = DB::table('constructions')->where('project_id', $id)->first();
+    return View::make('portal.construction', compact('construction', 'id'));
+    }
+    else return Redirect::to('index');
+  }
 
-
+	
 }

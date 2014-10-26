@@ -8,35 +8,23 @@ class AccessController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
+	{}
+
+  public function update($id)
 	{
-		return View::make('portal.accessResources');
+		
 	}
-
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+  
+  //Function to display the Acces Recource page
+	public function show()
   {
+    if ((Auth::user()) !== null)
+      {
+    $project = Project::find(Auth::user()->project_id);
+    $id = $project->id;
     $access = DB::table('accesses')->where('project_id', $id)->first();
     return View::make('portal.access', compact('access', 'id'));
+    }
+    else return Redirect::to('index');
   }
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
 }

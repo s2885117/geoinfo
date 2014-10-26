@@ -2,37 +2,29 @@
 
 class SiteController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+	public function index() {}
 
-  public function update($id)
+  //Stores the input from the user, if no row exsists with project_id create a new one, if it does retrieve that row and store values into that row
+  public function update()
   {
+    $project = Project::find(Auth::user()->project_id);
+    $id = $project->id;
     $input = Input::all();
-    if(is_null(DB::table('siteConditions')->where('project_id', $id)->first()))
+    if(is_null(DB::table('site_conditions')->where('project_id', $id)->first()))
     {
       $siteCondition = new SiteCondition;
-      $siteCondition->project_id = ($id);
+      $siteCondition->project_id = $id;
     }
     else
-      $siteCondition = DB::table('siteConditions')->where('project_id', $id)->first();
-    $siteCondition->commmunityBuidlng = $input['commmunityBuidlng'];
+    {
+      $siteCondition = Project::find($id)->siteCondition;
+    }
+    $siteCondition->communityBuilding = $input['communityBuilding'];
     $siteCondition->communityInfrastructure = $input['communityInfrastructure'];
     $siteCondition->floorArea = $input['floorArea'];
     $siteCondition->floorAreaUnit = $input['floorAreaUnit'];
-    $siteCondition->infrastuctureArea = $input['infrastuctureArea'];
-    $siteCondition->infrastuctureAreaUnit = $input['infrastuctureAreaUnit'];
+    $siteCondition->infrastructureArea = $input['infrastructureArea'];
+    $siteCondition->infrastructureAreaUnit = $input['infrastructureAreaUnit'];
     $siteCondition->northSite = $input['northSite'];
     $siteCondition->southSite = $input['southSite'];
     $siteCondition->eastSite = $input['eastSite'];
@@ -41,7 +33,8 @@ class SiteController extends \BaseController {
     $siteCondition->nearestCommercial = $input['nearestCommercial'];
     $siteCondition->nearestIndustrial = $input['nearestIndustrial'];
     $siteCondition->waterways = $input['waterways'];
-    $siteCondition->vegitation = $input['vegitation'];
+    $siteCondition->drainage = $input['drainage'];
+    $siteCondition->vegetation = $input['vegetation'];
     $siteCondition->fauna = $input['fauna'];
     $siteCondition->acidSulfateSoils = $input['acidSulfateSoils'];
     $siteCondition->qualityAgricultureLand = $input['qualityAgricultureLand'];
@@ -61,19 +54,37 @@ class SiteController extends \BaseController {
     $siteCondition->soilSampleDepth3 = $input['soilSampleDepth3'];
     $siteCondition->soilClassification1 = $input['soilClassification1'];
     $siteCondition->soilClassification2 = $input['soilClassification2'];
-    $siteCondition->soilClassification3 = $input['soilClassification'];
+    $siteCondition->soilClassification3 = $input['soilClassification3'];
     $siteCondition->description1 = $input['description1'];
     $siteCondition->description2 = $input['description2'];
     $siteCondition->description3 = $input['description3'];
-    $siteCondition->save(); 
     
-    return View::make('portal.siteCondition', compact('siteCondition', 'id'));
+    $siteCondition->nearestSchool = $input['nearestSchool'];
+    $siteCondition->nearestHospital = $input['nearestHospital'];
+    $siteCondition->nearestCommunity = $input['nearestCommunity'];
+    $siteCondition->nearestParkland = $input['nearestParkland'];
+    
+    //Added comment areas in each section.
+    $siteCondition->BuildInfraDemComment = $input['BuildInfraDemComment'];
+    $siteCondition->NeighLandUseComment = $input['NeighLandUseComment'];
+    $siteCondition->GeoCharComment = $input['GeoCharComment'];
+    $siteCondition->SoilCharComment = $input['SoilCharComment'];
+    $siteCondition->NatEnvCharComment = $input['NatEnvCharComment'];
+   
+    $siteCondition->save(); 
+    return View::make('portal.siteConditions', compact('siteCondition', 'id'));
   }
   
-  public function show($id)
+  public function show()
   {
-    $siteCondition = DB::table('siteConditions')->where('project_id', $id)->first();
+    if ((Auth::user()) !== null)
+      {
+    $project = Project::find(Auth::user()->project_id);
+      $id = $project->id;
+    $siteCondition = DB::table('site_conditions')->where('project_id', $id)->first();
     return View::make('portal.siteConditions', compact('siteCondition', 'id'));
+    }
+    else return Redirect::to('index');
   }
 
 
